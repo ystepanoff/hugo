@@ -233,6 +233,11 @@ func resolvePageTemplate(d LayoutDescriptor) []string {
 	return layouts
 }
 
+// Layout suffix aliases, in order of priority.
+var suffixAliases = map[string][]string{
+	"html": {"gohtml", "html"}, // gohtml is the preferred suffix for HTML templates, so try it first
+}
+
 func (l *layoutBuilder) resolveVariations() []string {
 	var layouts []string
 
@@ -255,9 +260,16 @@ func (l *layoutBuilder) resolveVariations() []string {
 					continue
 				}
 
-				s := constructLayoutPath(typeVar, layoutVar, variation, l.d.Suffix)
-				if s != "" {
-					layouts = append(layouts, s)
+				suffixes := []string{l.d.Suffix}
+				if aliases, ok := suffixAliases[l.d.Suffix]; ok {
+					suffixes = aliases
+				}
+
+				for _, suffix := range suffixes {
+					s := constructLayoutPath(typeVar, layoutVar, variation, suffix)
+					if s != "" {
+						layouts = append(layouts, s)
+					}
 				}
 			}
 		}

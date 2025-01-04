@@ -112,6 +112,7 @@ var (
 		Rel:            "stylesheet",
 		NotAlternative: true,
 	}
+
 	CSVFormat = Format{
 		Name:        "csv",
 		MediaType:   media.Builtin.CSVType,
