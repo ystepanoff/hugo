@@ -112,6 +112,7 @@ var (
 		Rel:            "stylesheet",
 		NotAlternative: true,
 	}
+
 	CSVFormat = Format{
 		Name:        "csv",
 		MediaType:   media.Builtin.CSVType,
@@ -131,6 +132,16 @@ var (
 		// Weight will be used as first sort criteria. HTML will, by default,
 		// be rendered first, but set it to 10 so it's easy to put one above it.
 		Weight: 10,
+	}
+
+	GOHTMLFormat = Format{
+		Name:          "gohtml",
+		MediaType:     media.Builtin.HTMLType,
+		BaseName:      "index",
+		Rel:           "canonical",
+		IsHTML:        true,
+		Permalinkable: true,
+		Weight:        10,
 	}
 
 	MarkdownFormat = Format{
@@ -209,6 +220,7 @@ var DefaultFormats = Formats{
 	CSSFormat,
 	CSVFormat,
 	HTMLFormat,
+	GOHTMLFormat,
 	JSONFormat,
 	MarkdownFormat,
 	WebAppManifestFormat,
