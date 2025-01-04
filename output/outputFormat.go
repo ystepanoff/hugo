@@ -134,16 +134,6 @@ var (
 		Weight: 10,
 	}
 
-	GOHTMLFormat = Format{
-		Name:          "gohtml",
-		MediaType:     media.Builtin.HTMLType,
-		BaseName:      "index",
-		Rel:           "canonical",
-		IsHTML:        true,
-		Permalinkable: true,
-		Weight:        10,
-	}
-
 	MarkdownFormat = Format{
 		Name:        "markdown",
 		MediaType:   media.Builtin.MarkdownType,
@@ -220,7 +210,6 @@ var DefaultFormats = Formats{
 	CSSFormat,
 	CSVFormat,
 	HTMLFormat,
-	GOHTMLFormat,
 	JSONFormat,
 	MarkdownFormat,
 	WebAppManifestFormat,
